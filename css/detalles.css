@@ -9,7 +9,7 @@ body{
     flex-direction: column;
     flex-wrap: nowrap;
     /* el alto seria la suma de los altos de los hijos */
-    height: 300vh; /* altura fija de la ventana del navegador */
+    height: 100vh; /* altura fija de la ventana del navegador */
 
 }
 
@@ -93,4 +93,30 @@ header #carrito{
 header #carrito i{
     font-size: 25px;
     color: green;
+}
+main {
+    flex-basis: 95%;
+    background-color: white;
+    flex-direction: column;
+}
+main nav {
+    flex-direction: row;
+    display: flex;
+    border: 1px solid black;
+    flex-basis: 20%;
+    padding: 10px;
+    position: relative;
+    flex-wrap: wrap;
+    margin-right: 160vh;
+    justify-content: space-around;
+}
+main nav a {
+    text-decoration: none;
+    color: black;
+}
+main figure#Galeria {
+    border: 1px solid black;
+    margin-top: 100px;
+    margin-right: 185vh;
+    margin-left: 25px;
 }
