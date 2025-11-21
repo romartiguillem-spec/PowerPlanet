@@ -119,4 +119,15 @@ main figure#Galeria {
     margin-top: 100px;
     margin-right: 185vh;
     margin-left: 25px;
+    
+}
+main figure img{
+    height: 100%;
+    width: 100px;
+    margin-left: 20px;
+}
+main figure#Principal{
+    flex-direction: row;
+    height: 100%;
+    flex-basis: 50%;
 }
