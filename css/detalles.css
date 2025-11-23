@@ -98,6 +98,7 @@ main {
     flex-basis: 95%;
     background-color: white;
     flex-direction: column;
+    width: 100%;
 }
 main nav {
     flex-direction: row;
@@ -114,20 +115,45 @@ main nav a {
     text-decoration: none;
     color: black;
 }
+main div {
+    display: flex;
+    flex-direction: row;
+    border: 1px solid black;
+    justify-content: space-between;
+    width: 100%;
+    height: 100%;
+}
 main figure#Galeria {
     border: 1px solid black;
-    margin-top: 100px;
-    margin-right: 185vh;
-    margin-left: 25px;
+    align-items: center;
+    width: 200px;
+    flex-direction: column;
+    display: flex;
     
 }
-main figure img{
-    height: 100%;
+main figure#Galeria img{
+    height: auto;
     width: 100px;
-    margin-left: 20px;
+    display: flex;
+    object-fit: cover;
+    margin-bottom: 10px;
+
 }
 main figure#Principal{
     flex-direction: row;
     height: 100%;
-    flex-basis: 50%;
+    border: 1px solid black;
+    width: 50%;
+    text-align: center;
+}
+main figure#Principal img {
+    height: 60%;
+    width: 60%;
+    object-fit: cover;
+    margin-top: 30px;
+    
+}
+main div section#DetallesProducto {
+    flex-basis: 40%;
+    border: 1px solid black;
 }
