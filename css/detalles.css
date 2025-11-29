@@ -101,6 +101,7 @@ main {
     width: 100%;
     display: flex;
     flex-wrap: wrap;
+    justify-content: center;
 }
 main nav {
     flex-direction: row;
@@ -126,13 +127,14 @@ main nav a#house {
 }
 
 main figure#Galeria {
-    border: 1px solid black;
+    /*border: 1px solid black;*/
     align-items: center;
     width: 200px;
     flex-direction: column;
     display: flex;
     flex-wrap: wrap;
-    
+    flex-basis: 10%;
+    margin: 20px;
 }
 main figure#Galeria img{
     height: auto;
@@ -145,10 +147,12 @@ main figure#Galeria img{
 main figure#Principal{
     flex-direction: row;
     height: 100%;
-    border: 1px solid black;
+    /*border: 1px solid black;*/
     width: 50%;
     text-align: center;
     flex-wrap: wrap;
+    flex-basis: 40%;
+    margin: 20px;
 }
 main figure#Principal img {
     height: 60%;
@@ -159,41 +163,76 @@ main figure#Principal img {
 }
 main section#DetallesProducto {
     flex-basis: 30%;
-    border: 1px solid black;
+    /*border: 1px solid black;*/
+    margin: 20px;
+}
+main section h1{
+    font-size: 50px;
 }
 main section p .star i {
-    font-size: 10px;
+    font-size: 40px;
     color: yellow;
     margin-right: 3px;
 }
 main section p .valoracion {
-    font-size: 15px;
+    font-size: 40px;
     margin-right: 3px;
 }
 main section p .opiniones{
-    font-size: 15px;
+    font-size: 40px;
 }
 main section p .opina{
-    font-size: 15px;
+    font-size: 40px;
 }
 main section div#caracteristicas {
-    border: 1px solid red;
+    /*border: 1px solid red;*/
     width: 100%;
     height: auto;
     position: relative;
-    
-    
+    justify-content: space-around;
+    display: flex;
 } 
 main section div#caracteristicas .dto{
     background-color: rgb(183,67,139);
     color: black;
     border-radius: 7px;
     height: 10%;
-    border: 1px solid black;
-    
+    /*border: 1px solid black;*/
+    font-size: 40px;
+}
+main section div#caracteristicas .pvr{
+    color: black;
+    height: 10%;
+    font-size: 40px;
 }
 main section div#Transporte{
     flex-direction: row;
     width: 100%;
+    /*border: 1px solid black;*/
+    height: 50px;
+    display: flex;
 }
-
+main section div#Transporte i{
+    color: black;
+    border-radius: 7px;
+    font-size: 30px;
+    
+    width: 100%;
+    object-fit: cover;
+    margin-top: 10px;
+}
+main section div#Transporte h3{
+    color: lightseagreen;
+    font-size: 40px;
+    /*border: 1px solid black;*/
+    margin: 10px;
+}
+main section h2{
+    /*border: 1px solid black;*/
+    color: blue;
+    margin-top: 200px;
+    font-size: 30px;
+    background-color: lightgreen;
+    text-align: center;
+    border-radius: 4px;
+}
