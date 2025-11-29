@@ -47,13 +47,6 @@
                 <img src="img porducto/Ordenador 1 im.jpg" alt="Primera imagen de la Galeria">
                 <img src="img porducto/chuwi_corebook_x_gris_5_ad_l.jpg" alt="Primera imagen de la Galeria">
                 <img src="img porducto/chuwi_corebook_x_gris_4_ad_l.jpg" alt="Segunda imagen de la Galeria">
-                <img src="img porducto/chuwi_corebook_x_gris_3_ad_l.jpg" alt="Tercera imagen de la Galeria">
-                <img src="img porducto/chuwi_corebook_x_gris_2_ad_l.jpg" alt="Curarta imagen de la Galeria">
-                <img src="img porducto/chuwi_corebook_x_amd_r5_7430u_1_ad_l.jpg" alt="Quinta imagen de la Galeria">
-                <img src="img porducto/chuwi_corebook_x_amd_r5_7430u_2_ad_l.jpg" alt="Sexta imagen de la Galeria">
-                <img src="img porducto/chuwi_corebook_x_amd_r5_7430u_3_ad_l.jpg" alt="Septima imagen de la Galeria">
-                <img src="img porducto/chuwi_corebook_x_amd_r5_7430u_4_ad_l.jpg" alt="Octaba imagen de la Galeria">
-                <img src="img porducto/chuwi_corebook_x_amd_r5_7430u_5_ad_l.jpg" alt="Novena imagen de la Galeria">
             </figure>
             <figure id="Principal">
                 <img src="img porducto/Ordenador 1 im.jpg" alt="Imagen Principal">
@@ -68,6 +61,7 @@
                         <i class="fa-solid fa-star"></i>
                         <i class="fa-solid fa-star"></i>
                     </span>
+                    
                     <span class="valoracion">44</span>
                     <span class="opiniones">(7 opiniones)</span>
                     <span class="opina">¡Opina!</span>
@@ -79,9 +73,12 @@
                 <span>Precios con IVA incluido</span>
                 <div id="Transporte">
                     <span>
-                        <i class="fa-solid fa-van-shuttle"></i>
+                        <i class="fa-solid fa-van-shuttle">Transporte Gratissss</i>
+                        <h3>Disponibilidad: En Stock</h3>
+                        <h3>Garantia: 3 añazos</h3>
                     </span>
                 </div>
+                <h2>¡ Compar ahora !</h2>
             </section>
         </div>
     </main>
@@ -89,12 +86,19 @@
 <script>
     fetch('js/detalles.json')
         .then(response => response.json())
-        .then(productos => {
-            const contenedor = document.getElementById('catalogo');
-
-
-
-
-
+        .then(detalles => {
+            const contenedor = document.getElementById('Galeria');
+            detalles.forEach (detalles => {
+            const tarjeta = document.createElement('article');
+            tarjeta.className = 'detalle'
+            tarjeta.innerHTML = `
+            <figure id="Galeria">
+                <img src=${detalle.imagenes}>
+                <img src=${detalle.imagenes}>
+                <img src=${detalle.imagenes}>
+            </figure>
+            `;
+contenedor.appendChild(tarjeta)
+        })
 })
 </script>
