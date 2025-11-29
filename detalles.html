@@ -43,7 +43,6 @@
             </a>
             <a href="#">Ordenadores Chuwi</a>
         </nav>
-        <div id="Columnas">
             <figure id="Galeria">
                 <img src="img porducto/Ordenador 1 im.jpg" alt="Primera imagen de la Galeria">
                 <img src="img porducto/chuwi_corebook_x_gris_5_ad_l.jpg" alt="Primera imagen de la Galeria">
@@ -77,7 +76,25 @@
                     <span class="dto">-15%</span>
                     <span class="pvr">49.99€</span>
                 </div>
+                <span>Precios con IVA incluido</span>
+                <div id="Transporte">
+                    <span>
+                        <i class="fa-solid fa-van-shuttle"></i>
+                    </span>
+                </div>
             </section>
         </div>
     </main>
-    </html>
+</html>
+<script>
+    fetch('js/detalles.json')
+        .then(response => response.json())
+        .then(productos => {
+            const contenedor = document.getElementById('catalogo');
+
+
+
+
+
+})
+</script>
