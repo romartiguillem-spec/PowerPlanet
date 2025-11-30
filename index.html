@@ -221,6 +221,7 @@
                 //con innerHTML escribo el contenido del nodo <article> creado anteriormente
                 tarjeta.className = 'producto';
                 tarjeta.innerHTML = `
+                    <a href=${producto.id}>
                     <p class="badge">Envio gratis</p>
                     <figure>
                         <img src="${producto.imagen}" alt="${producto.nombre}" />
@@ -250,6 +251,7 @@
                         <span class="pvp">${producto.precio}€</span>
                     </span>
                 </div>
+                </a>
                 `;
                 contenedor.appendChild(tarjeta)
             })

@@ -47,6 +47,9 @@
                 <img src="img porducto/Ordenador 1 im.jpg" alt="Primera imagen de la Galeria">
                 <img src="img porducto/chuwi_corebook_x_gris_5_ad_l.jpg" alt="Primera imagen de la Galeria">
                 <img src="img porducto/chuwi_corebook_x_gris_4_ad_l.jpg" alt="Segunda imagen de la Galeria">
+                <img src="img porducto/chuwi_corebook_x_gris_4_ad_l.jpg" alt="Segunda imagen de la Galeria">
+                <img src="img porducto/chuwi_corebook_x_gris_4_ad_l.jpg" alt="Segunda imagen de la Galeria">
+                <img src="img porducto/chuwi_corebook_x_gris_4_ad_l.jpg" alt="Segunda imagen de la Galeria">
             </figure>
             <figure id="Principal">
                 <img src="img porducto/Ordenador 1 im.jpg" alt="Imagen Principal">
@@ -84,21 +87,75 @@
     </main>
 </html>
 <script>
-    fetch('js/detalles.json')
-        .then(response => response.json())
-        .then(detalles => {
-            const contenedor = document.getElementById('Galeria');
-            detalles.forEach (detalles => {
-            const tarjeta = document.createElement('article');
-            tarjeta.className = 'detalle'
-            tarjeta.innerHTML = `
-            <figure id="Galeria">
-                <img src=${detalle.imagenes}>
-                <img src=${detalle.imagenes}>
-                <img src=${detalle.imagenes}>
+    // Obtenemos parámetro ID desde la URL
+    const params = new URLSearchParams(window.location.search)
+    const idBuscado = parseInt(params.get("id"));
+
+    async function cargarProducto() {
+
+        const respuesta = fetch("detalles.json");
+        const lista = respuesta.json();
+
+        const detalles = lista.find(item => item.id === idBuscado)
+
+        const imagenes = document.getElementById("Galeria")
+        imagenes.className = 'producto'
+        imagenes.innerHTML = `
+        <figure id="Galeria">
+                <img src=${producto.imagenesGaleria} alt=${producto.nombre}>
+                <img src=${producto.imagenesGaleria} alt=${producto.nombre}>
+                <img src=${producto.imagenesGaleria} alt=${producto.nombre}>
+                <img src=${producto.imagenesGaleria} alt=${producto.nombre}>
+                <img src=${producto.imagenesGaleria} alt=${producto.nombre}>
+                <img src=${producto.imagenesGaleria} alt=${producto.nombre}>
             </figure>
-            `;
-contenedor.appendChild(tarjeta)
-        })
-})
+        `;
+        contenedor.appendChild(imagenes)
+
+        const imagen = document.getElementById("Principal")
+        imagen.className = 'principal'
+        imagen.innerHTML = `
+        <figure id="Principal">
+                <img src=${principal.imagenPrincipal} alt=${principal.imagenPrincipal}
+        </figure>
+        `;
+        contenedor.appendChild(imagen)
+
+        const section = document.getElementById("DetallesProducto")
+        section.className = 'detalle'
+        section.innerHTML = `
+        <section id="DetallesProducto">
+                <h1>${detalle.nombre}</h1>
+                <p class="valoraciones">
+                    <span class="star">
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                    </span>
+                    
+                    <span class="valoracion">${detalle.valoracion}</span>
+                    <span class="opiniones">${detalle.opiniones}</span>
+                    <span class="opina">¡Opina!</span>
+                    </p>
+                <div id="caracteristicas">
+                    <span class="dto">${detalle.descuento}</span>
+                    <span class="pvr">${detalle.precio}</span>
+                </div>
+                <span>Precios con IVA incluido</span>
+                <div id="Transporte">
+                    <span>
+                        <i class="fa-solid fa-van-shuttle">Transporte Gratissss</i>
+                        <h3>Disponibilidad: En Stock</h3>
+                        <h3>Garantia: 3 añazos</h3>
+                    </span>
+                </div>
+                <h2>¡ Compar ahora !</h2>
+            </section>
+        `;
+        contenedor.appendChild(section)
+    }
+
+    cargarProducto();
 </script>
