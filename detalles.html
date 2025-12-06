@@ -65,7 +65,7 @@
                     </p>
                 <div id="caracteristicas">
                     <span id="dto" class="dto">-15%</span>
-                    <span class="pvr">49.99€</span>
+                    <span id="pvo" class="pvr">49.99€</span>
                 </div>
                 <span>Precios con IVA incluido</span>
                 <div id="Transporte">
@@ -89,7 +89,7 @@
     //comprobar que el id llega al dietalle.html a traves de la url
     console.log ("--->", idProd)
     
-    const producto = await fetch('./data/productos.json')
+    const producto = fetch('./data/productos.json')
     .then(response => response.json())
     .then (productos => {
         //buscar producto en array productos 
@@ -101,9 +101,9 @@
         //console.log(producto.no)
         document.getElementById('product_nombre').textContent = producto.nombre;
         document.getElementById('numero_valoracion').textContent = producto.valoracion;
-        document.getElementById('numero_opiniones').textContent = producto.valoracion;
+        document.getElementById('numero_opiniones').textContent = `( ${producto.opiniones} Opiniones )`;
         document.getElementById('dto').textContent = `- ${producto.descuento}%`;
         document.getElementById('portada').setAttribute('src',producto.imagen)
-
+        document.getElementById('pvo').textContent= `${producto.precio} €`;
     })
 </script>
