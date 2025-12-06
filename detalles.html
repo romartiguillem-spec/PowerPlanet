@@ -30,10 +30,10 @@
     </header>
     <main>
         <nav>
-            <a href="#" id="house">
+            <a href="http://127.0.0.1:5501/PowerPlanet/index.html" id="house">
                 <i class="fa-regular fa-house"></i>
             </a>
-            <a href="#">Informatica</a>
+            <a href="index.html">Informatica</a>
             <a href="#">
                 <span>></span>
             </a>
@@ -44,18 +44,12 @@
             <a href="#">Ordenadores Chuwi</a>
         </nav>
             <figure id="Galeria">
-                <img src="img porducto/Ordenador 1 im.jpg" alt="Primera imagen de la Galeria">
-                <img src="img porducto/chuwi_corebook_x_gris_5_ad_l.jpg" alt="Primera imagen de la Galeria">
-                <img src="img porducto/chuwi_corebook_x_gris_4_ad_l.jpg" alt="Segunda imagen de la Galeria">
-                <img src="img porducto/chuwi_corebook_x_gris_4_ad_l.jpg" alt="Segunda imagen de la Galeria">
-                <img src="img porducto/chuwi_corebook_x_gris_4_ad_l.jpg" alt="Segunda imagen de la Galeria">
-                <img src="img porducto/chuwi_corebook_x_gris_4_ad_l.jpg" alt="Segunda imagen de la Galeria">
             </figure>
             <figure id="Principal">
-                <img src="img porducto/Ordenador 1 im.jpg" alt="Imagen Principal">
+                <img id="portada" src="img porducto/Ordenador 1 im.jpg" alt="Imagen Principal">
             </figure>
             <section id="DetallesProducto">
-                <h1>Chuwi CoreBook X AMD R5 7430U/16GB/512GB/W11 14"</h1>
+                <h1 id="product_nombre">Chuwi CoreBook X AMD R5 7430U/16GB/512GB/W11 14"</h1>
                 <p class="valoraciones">
                     <span class="star">
                         <i class="fa-solid fa-star"></i>
@@ -65,12 +59,12 @@
                         <i class="fa-solid fa-star"></i>
                     </span>
                     
-                    <span class="valoracion">44</span>
-                    <span class="opiniones">(7 opiniones)</span>
+                    <span id="numero_valoracion" class="valoracion">44</span>
+                    <span  id="numero_opiniones" class="opiniones">(7 opiniones)</span>
                     <span class="opina">¡Opina!</span>
                     </p>
                 <div id="caracteristicas">
-                    <span class="dto">-15%</span>
+                    <span id="dto" class="dto">-15%</span>
                     <span class="pvr">49.99€</span>
                 </div>
                 <span>Precios con IVA incluido</span>
@@ -87,75 +81,29 @@
     </main>
 </html>
 <script>
-    // Obtenemos parámetro ID desde la URL
-    const params = new URLSearchParams(window.location.search)
-    const idBuscado = parseInt(params.get("id"));
+    // lo del profesor
+    // 1º opteneos los parametros de la URL
+    const urlParmans = new URLSearchParams(window.location.search)
+    // 2º optener el parametro id
+    const idProd = parseInt(urlParmans.get('id'))
+    //comprobar que el id llega al dietalle.html a traves de la url
+    console.log ("--->", idProd)
+    
+    const producto = await fetch('./data/productos.json')
+    .then(response => response.json())
+    .then (productos => {
+        //buscar producto en array productos 
+        const producto = productos.find(p => p.id === idProd)
+        //console.log("-1->",producto)
+        //console.log("-2->", producto.nombre, producto.precio)
+        //mirar
+        //console.log(producto);
+        //console.log(producto.no)
+        document.getElementById('product_nombre').textContent = producto.nombre;
+        document.getElementById('numero_valoracion').textContent = producto.valoracion;
+        document.getElementById('numero_opiniones').textContent = producto.valoracion;
+        document.getElementById('dto').textContent = `- ${producto.descuento}%`;
+        document.getElementById('portada').setAttribute('src',producto.imagen)
 
-    async function cargarProducto() {
-
-        const respuesta = fetch("detalles.json");
-        const lista = respuesta.json();
-
-        const detalles = lista.find(item => item.id === idBuscado)
-
-        const imagenes = document.getElementById("Galeria")
-        imagenes.className = 'producto'
-        imagenes.innerHTML = `
-        <figure id="Galeria">
-                <img src=${producto.imagenesGaleria} alt=${producto.nombre}>
-                <img src=${producto.imagenesGaleria} alt=${producto.nombre}>
-                <img src=${producto.imagenesGaleria} alt=${producto.nombre}>
-                <img src=${producto.imagenesGaleria} alt=${producto.nombre}>
-                <img src=${producto.imagenesGaleria} alt=${producto.nombre}>
-                <img src=${producto.imagenesGaleria} alt=${producto.nombre}>
-            </figure>
-        `;
-        contenedor.appendChild(imagenes)
-
-        const imagen = document.getElementById("Principal")
-        imagen.className = 'principal'
-        imagen.innerHTML = `
-        <figure id="Principal">
-                <img src=${principal.imagenPrincipal} alt=${principal.imagenPrincipal}
-        </figure>
-        `;
-        contenedor.appendChild(imagen)
-
-        const section = document.getElementById("DetallesProducto")
-        section.className = 'detalle'
-        section.innerHTML = `
-        <section id="DetallesProducto">
-                <h1>${detalle.nombre}</h1>
-                <p class="valoraciones">
-                    <span class="star">
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star"></i>
-                    </span>
-                    
-                    <span class="valoracion">${detalle.valoracion}</span>
-                    <span class="opiniones">${detalle.opiniones}</span>
-                    <span class="opina">¡Opina!</span>
-                    </p>
-                <div id="caracteristicas">
-                    <span class="dto">${detalle.descuento}</span>
-                    <span class="pvr">${detalle.precio}</span>
-                </div>
-                <span>Precios con IVA incluido</span>
-                <div id="Transporte">
-                    <span>
-                        <i class="fa-solid fa-van-shuttle">Transporte Gratissss</i>
-                        <h3>Disponibilidad: En Stock</h3>
-                        <h3>Garantia: 3 añazos</h3>
-                    </span>
-                </div>
-                <h2>¡ Compar ahora !</h2>
-            </section>
-        `;
-        contenedor.appendChild(section)
-    }
-
-    cargarProducto();
+    })
 </script>

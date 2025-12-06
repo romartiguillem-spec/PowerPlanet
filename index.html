@@ -32,7 +32,7 @@
         <h2>COMPRADDDD !!!!</h2>
         <section id="catalogo">
             <article>
-            <a href="detalles.html">
+            
                 <p class="badge">Envio gratis</p>
                 <figure>
                     <img src="img/productos/movil.png" alt="Producto 1" />
@@ -58,7 +58,7 @@
                     </span>
                 </div>
                 <p class="stock">Stock</p>
-                </a>
+                
             </article>
         </section>
     </main>
@@ -221,7 +221,6 @@
                 //con innerHTML escribo el contenido del nodo <article> creado anteriormente
                 tarjeta.className = 'producto';
                 tarjeta.innerHTML = `
-                    <a href=${producto.id}>
                     <p class="badge">Envio gratis</p>
                     <figure>
                         <img src="${producto.imagen}" alt="${producto.nombre}" />
@@ -251,9 +250,14 @@
                         <span class="pvp">${producto.precio}€</span>
                     </span>
                 </div>
-                </a>
+                
                 `;
                 contenedor.appendChild(tarjeta)
+                //*****añadimos un enlace a cada producto a su detalle****//
+                tarjeta.addEventListener('click', () => {
+                    //El id tiene que estar en el detalle
+                    window.location.href =`detalles.html?id=${producto.id}`;
+                });
             })
         })
 </script>
